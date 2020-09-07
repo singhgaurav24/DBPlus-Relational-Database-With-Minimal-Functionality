@@ -5,6 +5,7 @@
  **Please follow these steps**
  1. Fork Clone the repo to your gihub and local machine
  ```
+ git clone https://github.com/**your-github-handle**/3-Tier-Relational-Database.git
  ```
  2. Create your own working branch to deploy your code that will be merged to develop. (**Direct code of develop brnach can create confilcts so the PR from develop to develop will not be merge**)
  
@@ -14,8 +15,7 @@
  
  3. Add remote named **upstream** ponting to the main repo (**origin** will point to your clone)
  ```
- git add upstream 
- 
+ git add upstream https://github.com/prakashupes/3-Tier-Relational-Database.git
  ```
  4. Keep updated with main repo
  
