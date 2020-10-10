@@ -1,4 +1,4 @@
-# 3-Tier-Relational-Database
+# DB+:Relational Database With Minimal Functionality
 
 ### All the work reliy on the develop branch
 ### GUIDELINES of Contribution:
