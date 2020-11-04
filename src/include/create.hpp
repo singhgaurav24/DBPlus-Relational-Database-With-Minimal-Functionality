@@ -3,7 +3,8 @@
 #ifndef CREATE_H
 #define CREATE_H
 using namespace std;
-bool validate(const string &query);
+bool validate(string a);
+bool validate2(string a);
 
 
 

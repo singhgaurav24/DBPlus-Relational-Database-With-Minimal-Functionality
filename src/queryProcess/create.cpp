@@ -1,29 +1,21 @@
+#include<iostream>
 #include<vector>
 #include<string>
-#ifndef UTIL_HPP
-#define UTIL_HPP
+#include "../include/create.hpp"
+#include"../util/datatypes.hpp"
 using namespace std;
-vector <string> split2(const string &str, char del)
+bool validate(string a)
 {
-    string z="";
-    vector<string> stream;
-    for(auto x: str)
+    //cout<<"From cpp "<<a;
+    DataType dtype;
+    if(!dtype.exist_DataTypes("VARCHAR"))
     {
-        if(x==del)
-        {
-            stream.push_back(z);
-            z="";
-        }
-        else z+=x;
-
+        cout<<"Yes";
     }
-    stream.push_back(z);
-    return stream;
-
-
+    return true;
 }
-
-
-
-
-#endif
+bool validate2(string a)
+{
+    cout<<"From cpp2 "<<a;
+    return true;
+}
