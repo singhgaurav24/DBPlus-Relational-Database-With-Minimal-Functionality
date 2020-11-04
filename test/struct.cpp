@@ -1,4 +1,5 @@
 #include<iostream>
+#include<set>
 using namespace std;
 struct TypeCheck{
     int f1;
@@ -20,6 +21,9 @@ int main()
     t1[0].f2="Hello";
 
     ItemType t2[10];
+
+    set<string> s;
+    s.insert("hello");
     
 
 

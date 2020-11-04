@@ -1,3 +1,0 @@
-/home/prakash/DBPlus-Relational-Database-With-Minimal-Functionality/build/CMakeFiles/rebuild_cache.dir
-/home/prakash/DBPlus-Relational-Database-With-Minimal-Functionality/build/CMakeFiles/edit_cache.dir
-/home/prakash/DBPlus-Relational-Database-With-Minimal-Functionality/build/CMakeFiles/DBPlus.dir

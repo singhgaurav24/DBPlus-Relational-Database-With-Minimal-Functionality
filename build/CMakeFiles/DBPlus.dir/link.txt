@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/DBPlus.dir/src/main.cpp.o CMakeFiles/DBPlus.dir/src/queryProcess/create.cpp.o  -o DBPlus 
