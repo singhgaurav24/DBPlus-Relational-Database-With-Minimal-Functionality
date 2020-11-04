@@ -3,7 +3,7 @@
 #ifndef DATATYPES_HPP
 #define DATATYPES_HPP
 using namespace std;
-class DATATYPES
+class DataType
 {
     private:
     set<string> data_types;
@@ -11,7 +11,7 @@ class DATATYPES
     
 
     public:
-    DATATYPES()
+    DataType()
     {
         data_types.insert("VARCHAR");
         data_types.insert("INT");

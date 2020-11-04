@@ -1,27 +1,11 @@
 #include<vector>
 #include<string>
+#include<algorithm>
 #ifndef UTIL_HPP
 #define UTIL_HPP
 using namespace std;
-vector <string> split(const string &str, char del)
-{
-    string z="";
-    vector<string> stream;
-    for(auto x: str)
-    {
-        if(x==del)
-        {
-            stream.push_back(z);
-            z="";
-        }
-        else z+=x;
-
-    }
-    stream.push_back(z);
-    return stream;
-
-
-}
+vector <string> split(const string &str, char del);
+void toUpper(string& su);
 
 
 

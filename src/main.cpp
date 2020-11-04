@@ -2,7 +2,6 @@
 #include <string> 
 #include<vector>
 #include<map>
-#include<algorithm>
 #include "util/util.hpp"
 #include "include/create.hpp"
 using namespace std;
@@ -10,7 +9,7 @@ using namespace std;
 int tokenHash(string su)
 {
     map<string,int> hash;
-    transform(su.begin(), su.end(), su.begin(), ::toupper); 
+    toUpper(su);
     hash.insert({"CREATE",101});
     hash.insert({"INSERT",102});
     hash.insert({"DELETE",103});
@@ -29,11 +28,12 @@ int main() {
         cout<<"DBplus>> ";
         getline(cin,query);
         if(query=="q" || query=="quit") exit(1);
+        if(query.size()<1) continue;
 
         
         token=split(query,' ');
         int hash=tokenHash(token[0]);
-        validate(query);
+        isCreatevalidate(query,token);
         //cout<<hash;
         switch (hash)
         {
@@ -53,9 +53,7 @@ int main() {
         default:
             cout<<"INVALID QUERY"<<endl;
             break;
-        }
-        
-        
+        }        
     }
 
     return 0;
