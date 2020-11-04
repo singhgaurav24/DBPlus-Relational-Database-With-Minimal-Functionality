@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/MyExec.dir/src/main.cpp.o CMakeFiles/MyExec.dir/src/queryProcess/create.cpp.o  -o MyExec 
