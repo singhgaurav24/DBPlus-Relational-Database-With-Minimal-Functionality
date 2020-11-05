@@ -19,9 +19,9 @@ int tokenHash(string su)
     return it->second;
 
 }
-bool ValidateQuery::isValid(string query, char *err)
+bool ValidateQuery::isValid(string query, string &err, QType &qType)
 {
-
+        err="";
         vector<string> token;
         token=split(query,' ');
         int hash=tokenHash(token[0]);
@@ -30,7 +30,8 @@ bool ValidateQuery::isValid(string query, char *err)
         {
         case 101:
            //Cretae
-           
+            qType=WRITE;
+            return isCreatevalid(token,err);
             break;
         case 102:
             cout<<"i";
@@ -45,6 +46,7 @@ bool ValidateQuery::isValid(string query, char *err)
         default:
             cout<<"INVALID QUERY"<<endl;
             break;
-        }        
-    }
+        }  
+        return false;      
+    
 }
