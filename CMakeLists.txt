@@ -6,7 +6,13 @@ include_directories(include)
 add_executable(DBPlus
   src/main.cpp
   src/queryProcess/create.cpp
+  src/queryProcess/executeQuery.cpp
+  src/queryProcess/executeQuery.cpp
+
   src/include/create.hpp
+  src/include/executeQuery.hpp
+  src/include/validateQuery.hpp
   src/util/util.hpp
+  src/util/util.cpp
   src/util/datatypes.hpp
 )
