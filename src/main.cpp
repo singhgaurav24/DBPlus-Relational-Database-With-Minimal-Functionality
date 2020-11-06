@@ -14,7 +14,7 @@ using namespace std;
 int main() {
     string query;
     string err_msg;
-    QType qType;
+   // QType qType;
     cout<<"Runnig databse DBplus>>\nTo exit from database type q or quit \nFor any kind of help type --help \n\n";
     while (1)
     {
