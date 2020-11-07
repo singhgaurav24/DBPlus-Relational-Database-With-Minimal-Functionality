@@ -14,7 +14,7 @@ using namespace std;
 int main() {
     string query;
     string err_msg;
-   // QType qType;
+    QType qType;
     cout<<"Runnig databse DBplus>>\nTo exit from database type q or quit \nFor any kind of help type --help \n\n";
     while (1)
     {
@@ -29,19 +29,16 @@ int main() {
          * Make data type as enum
          * 
         */
-       //ValidateQuery executeQuery;
-       //if(!executeQuery.isValid(query,err_msg,qType)) cout<<"\n"<<query<<" "<<err_msg<<endl;
+       dbplus::ValidateQuery validateQuery;
+       if(!validateQuery.isValid(query,err_msg,qType)) 
+       {
+           //cout<<"\n"<<query<<" "<<err_msg<<endl;
+       }
 
-       //else cout<<"valid"<<endl;
-         hsql::SQLParserResult result;
-         hsql::SQLParser::parse(query, &result);
-         if (!result.isValid()) 
-         {
-             cout<<"Invalid\n";
-         }
-         else cout<<"Valid query\n";
+       else cout<<"valid"<<endl;
+    
 
-
+    
 
     }
     return 0;
