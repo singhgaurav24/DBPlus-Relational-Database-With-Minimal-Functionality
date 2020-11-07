@@ -29,19 +29,16 @@ int main() {
          * Make data type as enum
          * 
         */
-       //ValidateQuery executeQuery;
-       //if(!executeQuery.isValid(query,err_msg,qType)) cout<<"\n"<<query<<" "<<err_msg<<endl;
+       dbplus::ValidateQuery validateQuery;
+       if(!validateQuery.isValid(query,err_msg,qType)) 
+       {
+           //cout<<"\n"<<query<<" "<<err_msg<<endl;
+       }
 
-       //else cout<<"valid"<<endl;
-         hsql::SQLParserResult result;
-         hsql::SQLParser::parse(query, &result);
-         if (!result.isValid()) 
-         {
-             cout<<"Invalid\n";
-         }
-         else cout<<"Valid query\n";
+       else cout<<"valid"<<endl;
+    
 
-
+    
 
     }
     return 0;
