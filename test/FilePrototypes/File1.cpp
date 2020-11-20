@@ -3,7 +3,30 @@
 #include<vector>
 using namespace std;
 
+typedef enum {
+    SUN,
+    MON
+}week;
 
+vector <string> split(const string &str, char del)
+{
+    string z="";
+    vector<string> stream;
+    for(auto x: str)
+    {
+        if(x==del)
+        {
+            stream.push_back(z);
+            z="";
+        }
+        else z+=x;
+
+    }
+    stream.push_back(z);
+    return stream;
+
+
+}
 void read()
 {
     string file_name="table.db";
