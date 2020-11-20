@@ -109,7 +109,7 @@ void read_chunks(string key,int n)
      //check each chunk one by one
 
      int chunk=1;
-     
+     cout<<"Now pointer "<<file.tellg()<<endl;
     while(!found && file.tellg() < file_size)
     {
 
@@ -129,6 +129,7 @@ void read_chunks(string key,int n)
         upto_ptr+=n;
         end_ptr=strt_ptr+n;
         file.seekg(upto_ptr,ios::beg);
+        cout<<"Now pointer after beg check "<<file.tellg()<<endl;
 
         //check at end of chunk
         getline(file,str);
@@ -140,12 +141,14 @@ void read_chunks(string key,int n)
             break;
         }
         file.seekg(upto_ptr,ios::beg);
+        cout<<"Now pointer after end check "<<file.tellg()<<endl;
         //between end and start of chunk
 
         
         if(splited_str[0]>key){
             upto_ptr=strt_ptr;
             file.seekg(upto_ptr,ios::beg);
+            cout<<"Now pointer when key< "<<file.tellg()<<endl;
             loop_ptr=strt_ptr;
             while(getline(file,str) && end_ptr>=loop_ptr)
             {
@@ -162,6 +165,7 @@ void read_chunks(string key,int n)
         }
         upto_ptr+=n;
         file.seekg(upto_ptr,ios::beg);
+        cout<<"Now pointer after 1st chunk"<<file.tellg()<<endl;
         strt_ptr=end_ptr;
         chunk++;     
 
