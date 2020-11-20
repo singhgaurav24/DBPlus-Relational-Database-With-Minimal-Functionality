@@ -2,6 +2,47 @@
 #include<fstream>
 #include<vector>
 using namespace std;
+//Read only n bytes after k bytes where k<=file.size
+
+void read_n_k(int n,int k)
+{
+    //int n=10; //n is chunk size, k is
+    string file_name="table.db";
+    
+    ifstream file;
+    file.open(file_name);
+
+    /** Finds size of file
+    and skip k bytes
+    **/
+   
+    file.seekg(0, ios::end);
+    int file_size = file.tellg();
+    file.seekg(0, ios::beg); //put at 0th char from beg
+    if(k<=file_size)
+    {
+        file.seekg(k); 
+
+    }
+    
+    if(!file.is_open())cout<<"error"<<endl;
+    cout<<file.tellg()<<endl;
+    int bytes=0;
+    string str;
+    /**
+    It will readd complete line in which bytes fell.
+
+    **/
+	while(getline(file,str) && bytes<n)
+	{
+        
+		cout<<str<<endl;
+        bytes+=file.tellg();
+	}
+    cout<<file.tellg()<<endl;
+    file.close();
+}
+
  //Search data in each 10 bytes chunk, go for next chunk if data is not present in current chunk
  //if it is present then return true other wise data is not in the chunk
 void read_chunks(string key,int n)
