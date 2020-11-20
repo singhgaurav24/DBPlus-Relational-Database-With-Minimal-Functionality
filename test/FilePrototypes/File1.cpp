@@ -2,6 +2,23 @@
 #include<fstream>
 #include<vector>
 using namespace std;
+
+
+void read()
+{
+    string file_name="table.db";
+    
+    ifstream file;
+    file.open(file_name);
+    if(!file.is_open())cout<<"error"<<endl;
+    string str;
+	while(getline(file,str))
+	{
+		cout<<str<<endl;
+	}
+    file.close();
+}
+
 //Read only n bytes after k bytes where k<=file.size
 
 void read_n_k(int n,int k)
