@@ -1,10 +1,23 @@
 #include<vector>
 #include<string>
+#include "/usr/local/include/hsql//sql/statements.h"
+
 #ifndef INSERT_HPP
 #define INSERT_HPP
 //using namespace std;
-bool isCreatevalid(std::vector<std::string> token, std::string &err);
-void extractDelete(std::string &query);
+namespace dbplus{
+    class Insert{
+
+        public:
+        void insertStatement(const hsql::CreateStatement* create_stmt);
+        
+        
+    };
+    
+
+
+
+}
 
 
 
