@@ -1,9 +1,23 @@
 #include<vector>
 #include<string>
+#include "/usr/local/include/hsql//sql/statements.h"
+
 #ifndef CREATE_H
 #define CREATE_H
 //using namespace std;
-bool isCreatevalid(std::vector<std::string> token, std::string &err);
+namespace dbplus{
+    class Create{
+
+        public:
+        void createStatement(const hsql::CreateStatement* create_stmt);
+        
+        
+    };
+    
+
+
+
+}
 
 
 
