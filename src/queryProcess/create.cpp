@@ -5,25 +5,38 @@
 #include"../util/util.hpp"
 #include "/usr/local/include/hsql//sql/statements.h"
 using namespace std;
+using namespace hsql;
 namespace dbplus{
     
-        void Create::createStatement(const hsql::CreateStatement* create_stmt)
+        void Create::createStatement(const CreateStatement* create_stmt)
         {
-            string str="";
-            cout<<"create statement\n"<<endl;
-     //const CreateStatement* create_stmt = (const CreateStatement*) stmt; //typecast
-     cout<<"fields "<<endl;
-     cout<<create_stmt->tableName<<endl;
+
+            //if()b table alredy exist
+            string table(create_stmt->tableName);
+
+            string info=""; //structrure how table info will be stored in the file
+            
+            info+=table;
     // std::vector<char*>* viewColumns = create_stmt->viewColumns;
      //cout<<viewColumns->size()<<endl;
      //cout<<viewColumns->at(0);  
+     
      if (create_stmt->columns != nullptr) {
       
-      for (auto col_name : *create_stmt->columns) {
-        
-          cout<<col_name->name<<endl;
+      for (auto col: *create_stmt->columns) {
+        string col_name(col->name);
+        info=info+" "+col_name+" varchar";
+
+        col->nullable == true ? info+=" 0":info+=" 1";
+
+        info+=" 0"; //not primary key
+
+
+          
       }
+      cout<<info<<" ";
     }
+    
     
         }
         
