@@ -1,38 +1,44 @@
 #include <string>
 #include<vector>
-#include<map>
-#include <iostream>
+#include<iostream>
+#include <set>
+#include<fstream>
 #include "../include/validateQuery.hpp"
-#include "../util/util.hpp"
 #include "/usr/local/include/hsql/SQLParser.h"
 #include "/usr/local/include/hsql/util/sqlhelper.h"
-#include "../include/create.hpp"
+#include "/usr/local/include/hsql/sql/statements.h"
+#include"../util/util.hpp"
+
 using namespace std;
-
-
-
-int tokenHash(string su)
-{
-    map<string,int> hash;
-    toUpper(su);
-    hash.insert({"CREATE",101});
-    hash.insert({"INSERT",102});
-    hash.insert({"DELETE",103});
-    hash.insert({"SELECT",104});
-    auto it=hash.find(su);
-    return it->second;
-
-}
+using namespace hsql;
 namespace dbplus {
-bool ValidateQuery::isValid(string query, string &err, QType &qType)
-{
-        err="";
-        vector<string> token;
-        token=split(query,' ');
-        int hash=tokenHash(token[0]);
 
-        /**Parsing the query***/
-       hsql::SQLParserResult result;
+bool ValidateQuery:: existTable(const std::string table_name)
+{
+     std::set<std::string> table;
+     string file_name="table_index.txt";
+    
+        ifstream file;
+        file.open(file_name);
+        if(!file.is_open()) cout<<"error in opening file\n";
+        string str;
+        while(getline(file,str))
+	    {
+		  table.insert(str);
+            
+	    }
+        file.close();
+
+     if(table.find(table_name)!=table.end()) return true;
+    return false;
+    
+}
+
+
+bool ValidateQuery::isValid(string query, string &err,hsql::SQLParserResult &result)
+{
+       err="";
+       //hsql::SQLParserResult result;
        hsql::SQLParser::parse(query, &result);
        if (!result.isValid())
        {
@@ -43,34 +49,15 @@ bool ValidateQuery::isValid(string query, string &err, QType &qType)
             result.errorColumn());
             return false;
        }
-       return true;
-         
 
-        //cout<<hash;
-        /*
-        switch (hash)
-        {
-        case 101:
-           //Cretae
-            qType=WRITE;
-            return isCreatevalid(token,err);
-            break;
-        case 102:
-            cout<<"i";
-            break;
-        case 103:
-            cout<<"d";
-            break;
-        case 104:
-            cout<<"s";
-            break;
-        
-        default:
-            cout<<"INVALID QUERY"<<endl;
-            break;
-        }  
-        */
-        //return false;      
-    
+  return true;
+       // If table is already exist
+       /*
+       if(existTable())
+       {
+
+       }
+       */
+     
 }
 }

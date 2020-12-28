@@ -1,0 +1,4 @@
+create table abc(emd varchar notnull primary key); //only valid
+create table abc(emd varchar notnull primary key);
+create  abc(emd varchar notnull primary key);
+table abc (emd varchar notnull primary key) create ;

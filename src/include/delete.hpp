@@ -1,14 +1,21 @@
 #include<vector>
 #include<string>
-#ifndef DELETE_HPP
-#define DELETE_HPP
+#include "/usr/local/include/hsql//sql/statements.h"
+
+#ifndef DELETE_H
+#define DELETE_H
 //using namespace std;
-bool isCreatevalid(std::vector<std::string> token, std::string &err);
-void extractDelete(std::string &query);
+namespace dbplus{
+    class Delete{
+
+        public:
+        void deleteStatement(const hsql::CreateStatement* create_stmt);
+        
+        
+    };
+    
 
 
 
-
-
-
+}
 #endif

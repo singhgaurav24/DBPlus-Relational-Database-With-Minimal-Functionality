@@ -1,10 +1,26 @@
 #include<vector>
 #include<string>
+
+#include "/usr/local/include/hsql//sql/statements.h"
 #ifndef SELECT_HPP
 #define SELECT_HPP
+
+
+
 //using namespace std;
-bool isCreatevalid(std::vector<std::string> token, std::string &err);
-void extractDelete(std::string &query);
+namespace dbplus{
+    class Select{
+
+        public:
+        void selectStatement(const hsql::CreateStatement* create_stmt);
+        
+        
+    };
+    
+
+
+
+}
 
 
 
