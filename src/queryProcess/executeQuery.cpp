@@ -18,8 +18,8 @@ void ExecuteQuery::executeQuery(hsql::SQLParserResult &result)
       //we will again call validate function to check if query exist or not,
     //cout<<"Tbale name " <<((const SelectStatement *) stmt)->tableName;
 
-    PreprocessData data;
-    data.preprocess();
+    //PreprocessData data;
+    //data.preprocess();
 
     for (auto i = 0u; i < result.size(); ++i) {
      
