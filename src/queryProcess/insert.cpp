@@ -1,29 +1,42 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include <fstream>
 #include "../include/insert.hpp"
 #include"../util/util.hpp"
+#include "../include/validateQuery.hpp"
 #include "/usr/local/include/hsql//sql/statements.h"
 using namespace std;
 namespace dbplus{
     
-        void Insert::insertStatement(const hsql::CreateStatement* create_stmt)
+    void Insert::insertStatement(const hsql::InsertStatement* stmt)
         {
-            string str="";
-            cout<<"create statement\n"<<endl;
-     //const CreateStatement* create_stmt = (const CreateStatement*) stmt; //typecast
-     cout<<"fields "<<endl;
-     cout<<create_stmt->tableName<<endl;
-    // std::vector<char*>* viewColumns = create_stmt->viewColumns;
-     //cout<<viewColumns->size()<<endl;
-     //cout<<viewColumns->at(0);  
-     if (create_stmt->columns != nullptr) {
+            string table(stmt->tableName);
+            ValidateQuery valid;
+
+            if(valid.existTable(table))
+            {
+              cout<<"Error: Table already exist : "<<table<<endl;
+              return;
+              
+            }
+
+            string info=""; //structrure how table info will be stored in the file
+            
+            info+=table;
+            
+
+    
+             if (stmt->columns != nullptr) {
       
-      for (auto col_name : *create_stmt->columns) {
-        
-          cout<<col_name->name<<endl;
-      }
-    }
+             for (char* col_name : *stmt->columns) {
+             cout<<col_name;
+            }
+         }
+
+      for (auto expr : *stmt->values) {
+        cout<<expr->name<<endl;
+      } 
     
         }
         

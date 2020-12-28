@@ -9,7 +9,7 @@ namespace dbplus{
     class Insert{
 
         public:
-        void insertStatement(const hsql::CreateStatement* create_stmt);
+        void insertStatement(const hsql::InsertStatement* stmt);
         
         
     };
