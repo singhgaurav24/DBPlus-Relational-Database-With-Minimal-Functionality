@@ -1,17 +1,37 @@
 #include <string>
 #include<vector>
 #include<iostream>
+#include <set>
+#include<fstream>
 #include "../include/validateQuery.hpp"
 #include "/usr/local/include/hsql/SQLParser.h"
 #include "/usr/local/include/hsql/util/sqlhelper.h"
 #include "/usr/local/include/hsql/sql/statements.h"
+#include"../util/util.hpp"
+
 using namespace std;
 using namespace hsql;
 namespace dbplus {
 
-bool ValidateQuery:: existTable(const std::string)
+bool ValidateQuery:: existTable(const std::string table_name)
 {
+     std::set<std::string> table;
+     string file_name="table_index.txt";
+    
+        ifstream file;
+        file.open(file_name);
+        if(!file.is_open()) cout<<"error in opening file\n";
+        string str;
+        while(getline(file,str))
+	    {
+		  table.insert(str);
+            
+	    }
+        file.close();
+
+     if(table.find(table_name)!=table.end()) return true;
     return false;
+    
 }
 
 

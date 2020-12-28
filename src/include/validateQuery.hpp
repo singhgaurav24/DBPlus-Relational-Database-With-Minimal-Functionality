@@ -1,6 +1,7 @@
 #include <string> 
 #include<vector>
 #include "/usr/local/include/hsql/sql/statements.h"
+#include "/usr/local/include/hsql/SQLParser.h"
 #ifndef VALIDATE_QUERY_HPP
 #define VALIDATE_QUERY_HPP
 #include"../util/enums.hpp"
@@ -14,7 +15,7 @@ namespace dbplus{
         public:
     //executeQuery();
     //~executeQuery();
-        bool isValid(std::string str, std::string& err,std::vector<const hsql::SQLStatement* > &stmts);
+        bool isValid(std::string str, std::string& err,hsql::SQLParserResult &result);
         bool existTable(const std::string);
 
     };
