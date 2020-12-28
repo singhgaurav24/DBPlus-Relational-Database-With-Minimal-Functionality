@@ -7,11 +7,13 @@
 #include "include/executeQuery.hpp"
 #include "include/validateQuery.hpp"
 #include "/usr/local/include/hsql/util/sqlhelper.h"
-
+#include "/usr/local/include/hsql/SQLParser.h"
 
 using namespace hsql;
 
 using namespace std;
+
+using namespace dbplus;
 
 //class Driver
 
@@ -35,43 +37,29 @@ int main() {
         */
 
 
-       vector<const SQLStatement* > stmts;
+       hsql::SQLParserResult result;
        dbplus::ValidateQuery validateQuery;
-       if(!validateQuery.isValid(query,err_msg,stmts)) 
+       if(!validateQuery.isValid(query,err_msg,result)) 
        {
            cout<<err_msg<<endl;
            return 0;
        }
 
-       cout<<stmts.size()<<endl;
+       ExecuteQuery e;
+       e.executeQuery(result);
+       
 
+       
+
+
+
+/* TODO
+Execute query will have to parameters 1) stsmt 2)results
+if the query is read type then it return a result
          
      /*
      s
-     switch (stmt->type())
-     {
-     case kStmtCreate:
-     printInfo((const CreateStatement*) stmt);
-      break;
-     case kStmtSelect:
-      //cout<<"Tbale name " <<((const SelectStatement *) stmt)->tableName;
-      break;
-    case kStmtInsert:
-      printInsertStatementInfo((const InsertStatement*) stmt, 0);
-      break;
-    
-    case kStmtUpdate:
-     // cout<<"Tbale name" <<((const UpdateStatement *) stmt)->tableName;
-      break;
-    case kStmtExport:
-      printExportStatementInfo((const ExportStatement*) stmt, 0);
-      break;
-    case kStmtTransaction:
-      printTransactionStatementInfo((const TransactionStatement*) stmt, 0);
-      break;
-    default:
-      break;
-     }
+     
 
     }
 
