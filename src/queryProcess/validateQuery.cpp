@@ -1,5 +1,6 @@
 #include <string>
 #include<vector>
+#include<iostream>
 #include "../include/validateQuery.hpp"
 #include "/usr/local/include/hsql/SQLParser.h"
 #include "/usr/local/include/hsql/util/sqlhelper.h"
@@ -14,10 +15,10 @@ bool ValidateQuery:: existTable(const std::string)
 }
 
 
-bool ValidateQuery::isValid(string query, string &err,vector<const SQLStatement* > &stmts)
+bool ValidateQuery::isValid(string query, string &err,hsql::SQLParserResult &result)
 {
        err="";
-       hsql::SQLParserResult result;
+       //hsql::SQLParserResult result;
        hsql::SQLParser::parse(query, &result);
        if (!result.isValid())
        {
@@ -29,6 +30,7 @@ bool ValidateQuery::isValid(string query, string &err,vector<const SQLStatement*
             return false;
        }
 
+  return true;
        // If table is already exist
        /*
        if(existTable())
@@ -37,11 +39,5 @@ bool ValidateQuery::isValid(string query, string &err,vector<const SQLStatement*
        }
        */
      
-      for (auto i = 0u; i < result.size(); ++i) {
-        stmts.push_back(result.getStatement(i));
-      }
-      return true;
-          
-    
 }
 }
